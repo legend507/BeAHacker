@@ -1,3 +1,4 @@
+---------------aircrack-ng-------------------
 Background: aircrack-ng has a set of tools (i.e., airodump-ng, aireplay-ng, etc.). There tools enable a user to mess with WiFi Access Point, brute force password and so on.
 
 The following is a step-by-step instruction on how to DoS a WiFi AP: 
@@ -9,4 +10,17 @@ The following is a step-by-step instruction on how to DoS a WiFi AP:
 [SUMMARY] 1,2 prepares to mintor; 3 lists all WiFi APs; 4 lists all connected devices to a specific WiFi AP; 5 executes DoS attack and cut all connections between devices and this WiFi AP.
 
 6. ./6passwordBruteForce, do this after 4. 4 should output a .cap file, and 6 uses this .cap file as an input. Combine with crunch tools, 6 can brute force a WiFi AP.
+
+
+
+------------------------reaver--------------------------
+Background: There is a PIN code (usually 8 digits, in decimal) in a router, reaver crake this PIN code by accutally sending packets to the router. (Unlike aircrack-ng, who cracks captured communication log, reaver does Over-The-Air attack.)
+
+Before execute 1, set my wireless interface to monitor mode first.
+Refer to ./aircrack-ng's 1, 2, 3.
+1. do ./aircrack-ng 1, 2, 3.
+
+After setting wireless interface to monitor mode, execute 1 to list all vulnerable WiFi APs.
+2. ./7washWirelessInterface, in output, check 'WPS Locked'. If it says 'NO', the WiFi AP is vulnerable! Otherwise, reaver is useless. (After trying this on my router, I found that Router PIN Access will lock down after a few tries. Don't know how to solve this...)
+
 

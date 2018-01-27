@@ -1,0 +1,3 @@
+echo "The following command list all vulnerable WiFi APs around me."
+
+sudo wash -i wlp3s0
