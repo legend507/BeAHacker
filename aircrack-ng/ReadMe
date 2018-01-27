@@ -8,4 +8,5 @@ The following is a step-by-step instruction on how to DoS a WiFi AP:
 5. ./5deAuthenticateAllDevices, to send DeAuth messages to the WiFi AP and cut connecting to ALL devices
 [SUMMARY] 1,2 prepares to mintor; 3 lists all WiFi APs; 4 lists all connected devices to a specific WiFi AP; 5 executes DoS attack and cut all connections between devices and this WiFi AP.
 
+6. ./6passwordBruteForce, do this after 4. 4 should output a .cap file, and 6 uses this .cap file as an input. Combine with crunch tools, 6 can brute force a WiFi AP.
 
