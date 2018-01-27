@@ -1,0 +1,6 @@
+sudo airodump-ng -c 2 -w beginMonitorSpecifyChannel_Result --bssid B0:C7:45:B0:AB:D0 wlp3s0
+
+echo "Minitor a specific channel"
+
+# In the Output,
+## STATION: Devices connecting to this WiFi AP

@@ -1,0 +1,4 @@
+sudo airmon-ng check wlp3s0
+echo "All troublesome processes are listed up there. Need to kill them with 'sudo kill [PID]'"
+echo "Remember to kill NetworkManager first"
+

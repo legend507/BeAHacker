@@ -1,0 +1,11 @@
+Background: aircrack-ng has a set of tools (i.e., airodump-ng, aireplay-ng, etc.). There tools enable a user to mess with WiFi Access Point, brute force password and so on.
+
+The following is a step-by-step instruction on how to DoS a WiFi AP: 
+1. ./1setWirelessCardToMonitorMode, to set wireless card to monitor mode
+2. ./2checkTroublesomeProcesses, to check the processes that may cause trouble (e.g., trigger reboot)
+3. ./3beginMonitorAll, to monitor all wifi access points information
+4. ./4beginMonitorSpecifyChannel, to monitor a specific WiFi AP, and print the result to a file; by doing this you can find the MAC of connected devices
+5. ./5deAuthenticateAllDevices, to send DeAuth messages to the WiFi AP and cut connecting to ALL devices
+[SUMMARY] 1,2 prepares to mintor; 3 lists all WiFi APs; 4 lists all connected devices to a specific WiFi AP; 5 executes DoS attack and cut all connections between devices and this WiFi AP.
+
+
