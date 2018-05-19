@@ -2,3 +2,4 @@ sudo airodump-ng wlp3s0
 
 echo "This prints all WiFi access point info"
 
+

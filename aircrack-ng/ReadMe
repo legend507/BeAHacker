@@ -23,4 +23,7 @@ Refer to ./aircrack-ng's 1, 2, 3.
 After setting wireless interface to monitor mode, execute 1 to list all vulnerable WiFi APs.
 2. ./7washWirelessInterface, in output, check 'WPS Locked'. If it says 'NO', the WiFi AP is vulnerable! Otherwise, reaver is useless. (After trying this on my router, I found that Router PIN Access will lock down after a few tries. Don't know how to solve this...)
 
+----------------Conclusion-----------------
+Aircrack-ng is useful, for it can find what device is connected to a WiFi AP and DoS to cut those connections.
+Reaver, however, is not useful. 
 

