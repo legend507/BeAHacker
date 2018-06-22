@@ -1,0 +1,7 @@
+John the Ripper is a brute force password cracking tool.
+On Ubuntu, 
+    1st. install John
+    2nd. use command "root@pro5:~/hack# john file.txt"
+
+The "shadow" file is an example of Ubuntu password file.
+JTR can find the password for admin in this file.
