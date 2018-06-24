@@ -1,0 +1,13 @@
+A tool to convert HTTPS to HTTP.
+use "sudo apt-get install sslstrip" to install this tool.
+
+Another tool, "dsniff", is to sniff a victim's DNS queries.
+Also install this tool using apt-get.
+
+Tool "arpspoof", to trick router into thinking that I am someone else.
+
+
+In conclusion, I understand how to use arpspoof to trick a victim into believing me to be his gateway. But after that, on my Linux, why redirect all traffic? How SSLStrip works? I don't know...
+
+2018.06.24
+Gonna dig deeper on sslstrip if the need emerges. For now, the takeaway from this is arpspoof. 
