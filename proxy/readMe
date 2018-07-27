@@ -1,0 +1,18 @@
+To install, apt-get
+    squid3, a proxy 
+    apache2,
+    imagemagick,
+    ghostscript,
+    jp2a,
+
+To download, some funny scripts
+    asciiImages.pl, to change images into ascii 
+    googleSearch.pl, to add words behind google search keywords,
+
+To config, 
+    squid, 
+        on ubuntu, /etc/squid/squid.conf
+            1. search for "acl localnet src", and uncomment the line representing my network
+            2. search for "http_access allow localnet", uncomment
+            3. search for "http_port 3128", add " transparent" after 3128
+            4. add "url_rewrite_program [path]", at the end of this file, e.g., "url_rewrite_program /home/hacker/work/BeAHacker/proxy/googleSearch.pl"
