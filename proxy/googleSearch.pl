@@ -6,7 +6,7 @@
 use IO::Handle;
 use POSIX strftime;
 
-$debug = 0;                               # Debug mode - create log file
+$debug = 1;                               # Debug mode - create log file
 $extraText = "in+my+pants";
 
 $|=1;
