@@ -35,7 +35,14 @@ Note, to do the following, I also need another network interface that HAS intern
 Because the wireless one (wlp3s0) is down at this moment, and mon0 is the fake AP interface I used in airbase command.
 
 Then from here, config my fake AP to provide internet access.
-1. 
+1. apt-get install bridge-utils
+2. brctl addbr evilTwin, to create a bridge
+3. brctl addif evilTwin enp0s25, this is a wire interface and has internet connectiong, one end of evilTwin bridge is it
+4. brctl addif evilTwin at0, at0 is airbase-ng created interface, the other end of evilTwin bridge is it
+5. ifconfig at0 0.0.0.0 up
+6. ifconfig evilTwin up
+7. dhclient evil, 
+After those steps, devices connecting to my Fake AP will have internet connection.
 
 
 May need the equipment,
