@@ -1,0 +1,12 @@
+# Methods for Staying anonymous
+## use Tor
+1. install Tor, apt-get install tor -y
+2. create a new user, do NOT use root to browse internet!
+	adduser tor
+3. downloard tor from torproject.org, untar the package
+4. type "hidden wiki"
+	to find links to all kinda of things~
+
+## use proxy chain
+
+## use VPN

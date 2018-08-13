@@ -1,6 +1,0 @@
-# Use known vulnerabilities to break routers
-1. www.exploit-db.com, a good start point to search for known vulnerabilities
-2. Google "xxx(router name) vulns", I may find more known vulnerabilities
-(The vulns can be very different)
-3. for some vulns, there is a chance that I can get a binary config file from a router
-4. find a xxx (maker) config file decompressor to find username:password to login to the router
