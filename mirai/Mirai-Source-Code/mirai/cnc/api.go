@@ -27,7 +27,10 @@ func (this *Api) Handle() {
         this.conn.Write([]byte("ERR|Failed reading line\r\n"))
         return
     }
+
+    // the input come with cmd
     passwordSplit := strings.SplitN(cmd, "|", 2)
+    // apikey is in cmd input, check if this apikey is in DB
     if apiKeyValid, userInfo = database.CheckApiCode(passwordSplit[0]); !apiKeyValid {
         this.conn.Write([]byte("ERR|API code invalid\r\n"))
         return

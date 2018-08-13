@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-    l, err := net.Listen("tcp", "0.0.0.0:48101")
+    l, err := net.Listen("tcp", "0.0.0.0:48101")        // open port, waiting for connection
     if err != nil {
         fmt.Println(err)
         return
@@ -20,7 +20,7 @@ func main() {
         if err != nil {
             break
         }
-        go handleConnection(conn)
+        go handleConnection(conn)                       // when a bot connects, call this func
     }
 }
 

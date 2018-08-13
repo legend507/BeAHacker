@@ -1,5 +1,5 @@
 ../Mirai-Source-Code/
-├── dlr
+├── dlr                                 # ?
 │   ├── build.sh
 │   ├── main.c
 │   └── release
@@ -14,7 +14,7 @@
 ├── ForumPost.md
 ├── ForumPost.txt
 ├── LICENSE.md
-├── loader
+├── loader                                  # some downloader, don't know what this is for
 │   ├── bins
 │   │   ├── dlr.arm
 │   │   ├── dlr.arm7
@@ -37,14 +37,14 @@
 │       │   ├── server.h
 │       │   ├── telnet_info.h
 │       │   └── util.h
-│       ├── main.c
-│       ├── server.c
+│       ├── main.c                          # this main read the vulnerable device info, and call server_queue_telnet on those info
+│       ├── server.c                        # call server_telnet_probe func, to login the vulnerable devices, and use downloader or wget or TFTP to download 
 │       ├── telnet_info.c
 │       └── util.c
-├── mirai
-│   ├── bot
+├── mirai                                   # mirai source code
+│   ├── bot                                 # bot source code, to control each bot
 │   │   ├── attack_app.c
-│   │   ├── attack.c
+│   │   ├── attack.c                        # receives attack from C&C
 │   │   ├── attack_gre.c
 │   │   ├── attack.h
 │   │   ├── attack_tcp.c
@@ -60,14 +60,14 @@
 │   │   ├── rand.h
 │   │   ├── resolv.c
 │   │   ├── resolv.h
-│   │   ├── scanner.c
+│   │   ├── scanner.c                   # scan for vulnerable devices
 │   │   ├── scanner.h
 │   │   ├── table.c
 │   │   ├── table.h
 │   │   ├── util.c
 │   │   └── util.h
 │   ├── build.sh
-│   ├── cnc
+│   ├── cnc                             # command and control server source code, written in Golang; C&C controls all bots 
 │   │   ├── admin.go
 │   │   ├── api.go
 │   │   ├── attack.go
@@ -75,20 +75,32 @@
 │   │   ├── clientList.go
 │   │   ├── constants.go
 │   │   ├── database.go
-│   │   └── main.go
+│   │   └── main.go                         # main function, 
 │   ├── prompt.txt
 │   └── tools
 │       ├── badbot.c
 │       ├── enc.c
 │       ├── nogdb.c
-│       ├── scanListen.go
+│       ├── scanListen.go               # receive vulnerable devices info from bots
 │       ├── single_load.c
 │       └── wget.c
 ├── README.md
-└── scripts
+└── scripts                             # script & command for config
     ├── cross-compile.sh
     ├── db.sql
     └── images
         └── BVc7qJs.png
 
 12 directories, 79 files
+
+
+How to process the analysis, 
+- try to figure out the sequence of infection
+    1. sequence of attack, I'm assuming C&C is firstly established.
+    2. after C&C, who does the scan work? (my understanding is bots do scan work)
+    3. when a vulnerable devices is found, my understanding is the bot upload the info to server,
+    4. upon receiving the info, server (or loader?) tries to login on the vulnerable device, and try wget, TFTP, downloader to send the bot to the devices
+
+- try to figure out how attack command are communicated to the bots,
+- try to understand how bots disguise themselves on the vulnerable devices
+- try to learn how dictionary scan is done (by bot?)
